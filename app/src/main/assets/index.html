@@ -229,6 +229,7 @@ mark.neg{background:var(--red-bg);color:var(--red);font-weight:800;padding:0 .2e
     <button class="tile" id="go_math"><span class="ic">✖️</span><span><b>Math</b><small id="sub_math"></small></span></button>
     <button class="tile" id="go_ss"><span class="ic">🏕️</span><span><b>Social Studies</b><small id="sub_ss"></small></span></button>
     <button class="tile" id="go_sci"><span class="ic">🧊</span><span><b>Science</b><small id="sub_sci"></small></span></button>
+    <button class="tile" id="go_novel"><span class="ic">🐬</span><span><b>Class Novel</b><small id="sub_novel"></small></span></button>
   </div>
   <div class="panel">
     <p class="label" id="wkLabel">This week's tests</p>
@@ -1683,6 +1684,152 @@ SUBJ.sci={name:"Science",icon:"🧊",intro:"DQ 4: how ice and wind change the la
   sq(3,"In a lab, a fan blows on three piles of sand. Which pile will lose the LEAST sand?",["a pile with grass growing in it","a dry pile with nothing on it","a pile of extra-fine dust","a pile standing in the strongest wind"],0,"The grass roots hold the sand, so less blows away.")]}
  ]};
 
+// ---------- Ahead of class (added Nov 5 2026 from Inventory #11) ----------
+// Dhil wants her ahead, not a week behind, so these load next week's material early.
+// Science: Twig Science Module 3 "Time-Traveling Tour Guides" (rock layers, fossils, how landscapes change).
+SUBJ.sci.topics.push({id:"layers",name:"Rock layers & fossils (next module)",notes:[
+ "*Sedimentary rock* forms when layers of sediment (sand, mud, shells) pile up and press together over a very long time.",
+ "In rock layers that haven't been flipped, the BOTTOM layer is the OLDEST and the TOP layer is the YOUNGEST. Each new layer is laid on top.",
+ "A *fossil* is the remains or trace of a living thing from long ago: a shell, bone, leaf print or footprint saved in rock.",
+ "A fossil is about as old as the rock layer it is found in.",
+ "Fossils show what a place was like long ago. Sea shell fossils on dry land mean the land was once under water. Fern fossils in a cold place mean it was once warm and wet.",
+ "The *Grand Canyon*: the Colorado River cut down through the rock for millions of years, so you can see many layers in its walls.",
+ "Most landscape change is SLOW (weathering and erosion by water, wind and ice). Some is FAST: earthquakes, landslides, floods and volcanoes.",
+ "Weathering and erosion also wear down things people build, like roads, statues and buildings."],qs:[
+ Object.assign(sq(1,"In a stack of rock layers that has not been moved, which layer is usually the OLDEST?",["the bottom layer","the top layer","the middle layer","they are all the same age"],0,"Layers pile up one on top of another, so the bottom one was laid down first."),{key:"oldest"}),
+ Object.assign(sq(1,"What is a fossil?",["the remains or trace of a living thing from long ago","any shiny rock","a kind of crystal","a layer of sand"],0,"Fossils are bones, shells, prints or tracks of old living things saved in rock."),{key:"fossil"}),
+ Object.assign(sq(1,"Rock that forms from layers of sand, mud and shells pressed together is called —",["sedimentary rock","lava","a glacier","a mineral"],0,"*Sediment* + layers pressed together = *sedimentary* rock. Most fossils are found in it."),{key:"sedrock"}),
+ Object.assign(sq(1,"What carved the Grand Canyon?",["the Colorado River, over millions of years","an earthquake in one day","glaciers last year","people with machines"],0,"The river slowly cut down through the rock, showing the layers in the walls."),{key:"grand"}),
+ Object.assign(sq(1,"Which is a FAST change to Earth's surface?",["a landslide","a river slowly carving a canyon","wind wearing down a rock","a glacier moving"],0,"Landslides, earthquakes, floods and volcanoes change the land quickly. The others take a very long time."),{key:"fast"}),
+ Object.assign(sq(2,"Scientists find fossils of sea shells high on a mountain. What does this tell them?",["The land was once under the ocean.","Birds dropped the shells there.","The mountain is made of shells only.","It snows sea shells there."],0,"Sea animals live in the ocean, so the rock there was once under water and later pushed up."),{key:"seashell"}),
+ Object.assign(sq(2,"A fern fossil is found in a very cold, icy place. What was the place probably like long ago?",["warm and wet","always frozen","a dry desert","under the ocean"],0,"Ferns grow where it is warm and wet, so the climate there has changed."),{key:"fern"}),
+ Object.assign(sq(2,"A fossil is found in the third layer from the bottom. About how old is the fossil?",["about as old as that rock layer","older than the bottom layer","younger than the top layer","it is brand new"],0,"A fossil formed when its layer formed, so it is about the same age as that layer."),{key:"fossilage"}),
+ Object.assign(sq(2,"Why can you see so many rock layers in the walls of a canyon?",["The river cut down through them and uncovered them.","Someone painted the layers on.","The layers fell from the sky.","Wind stacked the rocks up."],0,"As the river eroded deeper, older and older layers were uncovered."),{key:"canyon"}),
+ Object.assign(sq(2,"An old stone statue's face has worn smooth over 200 years of rain. This is an example of —",["weathering","deposition","a volcano","a fossil forming"],0,"Rain slowly breaking down the stone is weathering. It affects things people build too."),{key:"statue"}),
+ Object.assign(sq(2,"A mountain stream is muddy after a storm. What is the stream carrying?",["sediment","fossils only","ice","lava"],0,"Moving water picks up bits of soil, sand and rock: sediment. That is erosion."),{key:"stream"}),
+ Object.assign(sq(3,"Which statement is NOT true?",["Only water can cause erosion.","Wind can cause erosion.","Glaciers can cause erosion.","Ocean waves can cause erosion."],0,"Water, wind, ice and gravity can ALL cause erosion, so *only water* is false."),{key:"notwater"}),
+ Object.assign(sq(3,"Which statement about landscape change is NOT true?",["Every change to the land is sudden and destructive.","Some changes take millions of years.","Earthquakes can change land quickly.","Rivers slowly change the land."],0,"Most changes are slow. Only some, like earthquakes or landslides, are sudden."),{key:"notcat"}),
+ Object.assign(sq(3,"Layer A (top) has fish fossils. Layer B (bottom) has land-plant fossils. What happened at this place?",["It was land first, then later it was covered by water.","It was water first, then land.","Both layers formed on the same day.","Nothing ever changed there."],0,"The bottom layer is older: land plants first. The top is younger: fish came later, so water covered the land."),{key:"story"}),
+ Object.assign(sq(3,"Which TWO can fossils tell us?",["what living things lived long ago","what the environment was like long ago","what the weather will be tomorrow","how old a person is"],[0,1],"Fossils are clues to past life and past environments."),{key:"fostwo"}),
+ Object.assign(sq(3,"Which TWO are slow changes to Earth's surface?",["a river carving a canyon","wind wearing away a rock","a volcano erupting","an earthquake"],[0,1],"Carving and wearing away take a very long time. Volcanoes and earthquakes are fast."),{key:"slowtwo"})
+]});
+
+// Math: Math Expressions Unit 3, division with whole numbers (next unit after the Unit 2 test).
+SUBJ.math.topics.push({id:"div",name:"Division (Unit 3 preview)",notes:[
+ "Division undoes multiplication: 24 ÷ 6 = 4 because 6 × 4 = 24.",
+ "Words: in 25 ÷ 4 = 6 R1, 25 is the *dividend*, 4 is the *divisor*, 6 is the *quotient* and 1 is the *remainder*.",
+ "Big numbers: break the dividend into parts you know. 84 ÷ 4 → 80 ÷ 4 = 20 and 4 ÷ 4 = 1, so 21.",
+ "Place Value Sections for division: build the quotient one part at a time (tens, then ones), subtracting each part.",
+ "The remainder must be smaller than the divisor.",
+ "Check: quotient × divisor + remainder = dividend. 6 × 4 + 1 = 25.",
+ "Word problems: decide what to do with the remainder. Need room for everyone? Round UP. Only full groups count? Drop it. Asked what's left? The remainder is the answer."],qs:[
+ Object.assign(sq(1,"What is 36 ÷ 4?",["9","8","32","40"],0,"4 × 9 = 36, so 36 ÷ 4 = 9."),{key:"d36"}),
+ Object.assign(sq(1,"In 29 ÷ 5 = 5 R4, which number is the *quotient*?",["5 (the answer before R)","29","4","the 5 you divide by"],0,"The quotient is the answer: 5. 29 is the dividend, 5 is the divisor and 4 is the remainder."),{key:"words"}),
+ Object.assign(sq(1,"What is 80 ÷ 4?",["20","2","200","40"],0,"8 tens ÷ 4 = 2 tens = 20."),{key:"d80"}),
+ Object.assign(sq(1,"What is 600 ÷ 3?",["200","20","2,000","180"],0,"6 hundreds ÷ 3 = 2 hundreds = 200."),{key:"d600"}),
+ Object.assign(sq(1,"Which multiplication fact helps you find 42 ÷ 7?",["7 × 6 = 42","7 × 7 = 49","6 × 6 = 36","42 × 7 = 294"],0,"Ask: 7 times what makes 42? 7 × 6 = 42, so the answer is 6."),{key:"fact"}),
+ Object.assign(sq(2,"What is 84 ÷ 4?",["21","20","24","12"],0,"80 ÷ 4 = 20 and 4 ÷ 4 = 1. 20 + 1 = 21."),{key:"d84"}),
+ Object.assign(sq(2,"What is 96 ÷ 3?",["32","30","33","23"],0,"90 ÷ 3 = 30 and 6 ÷ 3 = 2. 30 + 2 = 32."),{key:"d96"}),
+ Object.assign(sq(2,"What is 75 ÷ 5?",["15","25","13","17"],0,"50 ÷ 5 = 10 and 25 ÷ 5 = 5. 10 + 5 = 15."),{key:"d75"}),
+ Object.assign(sq(2,"What is 27 ÷ 4?",["6 R3","7 R1","6 R1","5 R7"],0,"4 × 6 = 24, and 27 − 24 = 3 left over. So 6 R3."),{key:"r27"}),
+ Object.assign(sq(2,"What is 158 ÷ 5?",["31 R3","30 R8","31 R2","32 R2"],0,"150 ÷ 5 = 30. 8 ÷ 5 = 1 R3. So 31 R3. Check: 31 × 5 + 3 = 158."),{key:"r158"}),
+ Object.assign(sq(2,"What is 246 ÷ 6?",["41","40","46","401"],0,"240 ÷ 6 = 40 and 6 ÷ 6 = 1. 40 + 1 = 41."),{key:"d246"}),
+ Object.assign(sq(2,"Which answer CAN'T be right for a problem divided by 4?",["8 R5","8 R3","8 R1","8 R0"],0,"The remainder must be smaller than the divisor. 5 is bigger than 4, so you could make one more group."),{key:"remrule"}),
+ Object.assign(sq(2,"Check this answer: 53 ÷ 6 = 8 R5. Which shows it is right?",["6 × 8 + 5 = 53","6 + 8 + 5 = 19","53 − 6 = 47","8 × 5 = 40"],0,"Quotient × divisor + remainder = dividend: 48 + 5 = 53."),{key:"check"}),
+ Object.assign(sq(3,"26 students go on a trip. Each van holds 4 students. How many vans do they need?",["7","6","6 R2","8"],0,"26 ÷ 4 = 6 R2. The 2 extra students still need a van, so round UP to 7."),{key:"vans"}),
+ Object.assign(sq(3,"Ivana has 50 stickers. She puts 8 on each page. How many FULL pages can she make?",["6","7","6 R2","5"],0,"50 ÷ 8 = 6 R2. Only full pages count, so the answer is 6."),{key:"pages"}),
+ Object.assign(sq(3,"A baker has 45 muffins and packs 6 in each box. How many muffins are left over?",["3","7","6","9"],0,"45 ÷ 6 = 7 R3. The question asks what's left, so the answer is the remainder: 3."),{key:"left"}),
+ Object.assign(sq(3,"A ribbon is 96 inches long. It is cut into 8 equal pieces. How long is each piece?",["12 inches","11 inches","88 inches","104 inches"],0,"96 ÷ 8 = 12, because 8 × 12 = 96."),{key:"ribbon"}),
+ Object.assign(sq(3,"Which is NOT a correct way to find 72 ÷ 3?",["(7 ÷ 3) + (2 ÷ 3)","(60 ÷ 3) + (12 ÷ 3)","(30 ÷ 3) + (42 ÷ 3)","3 × ? = 72"],0,"The 7 in 72 means 70, not 7. Split 72 into parts that divide evenly: 60 + 12. The answer is 24."),{key:"notdiv"}),
+ Object.assign(sq(3,"Estimate: about how much is 389 ÷ 4?",["about 100","about 10","about 1,000","about 40"],0,"389 is close to 400, and 400 ÷ 4 = 100."),{key:"est"})
+]});
+SUBJ.math.intro="Unit 2: multiplying big numbers, plus a preview of Unit 3 division.";
+
+// Social Studies: the next TCI chapter, exploration and settlement of California.
+SUBJ.ss.topics.push({id:"explore",name:"Explorers & missions (next chapter)",notes:[
+ "Spain explored to find riches like gold, to spread Christianity, and to find a shortcut by water to Asia.",
+ "People searched for a water shortcut through North America. Some called it the *Northwest Passage*. It was never found.",
+ "*Juan Rodríguez Cabrillo* (1542) sailed for Spain. He was the first European to explore the California coast, starting at San Diego Bay.",
+ "*Francis Drake* (1579) sailed for England. He landed in northern California and claimed the land for England, calling it *Nova Albion*.",
+ "*Sebastián Vizcaíno* (1602) sailed for Spain, mapped the coast and named places like Monterey Bay.",
+ "*Alta California* = upper California (our state). *Baja California* = lower California, a *peninsula* (land with water on three sides).",
+ "Spain worried Russia and England would take California, so in 1769 it sent *Gaspar de Portolá* (a soldier) and *Father Junípero Serra* (a priest) north.",
+ "Serra founded the first mission, *Mission San Diego de Alcalá*, in 1769. Spain built *missions* (religious settlements), *presidios* (forts for soldiers) and *pueblos* (towns)."],qs:[
+ Object.assign(sq(1,"Who was the first European to explore the coast of California?",["Juan Rodríguez Cabrillo","Francis Drake","Junípero Serra","Christopher Columbus"],0,"Cabrillo sailed for Spain in 1542 and explored the coast starting at San Diego Bay."),{key:"cabrillo"}),
+ Object.assign(sq(1,"Francis Drake explored California for which country?",["England","Spain","Russia","France"],0,"Drake sailed for England and called the land *Nova Albion*."),{key:"drake"}),
+ Object.assign(sq(1,"A *presidio* was —",["a fort where soldiers lived","a church","a farm town","a ship"],0,"Presidios were forts. Soldiers there protected the missions."),{key:"presidio"}),
+ Object.assign(sq(1,"A *pueblo* was —",["a town","a fort","a ship","a canoe"],0,"Pueblos were towns where settlers lived and farmed, like Los Angeles and San Jose."),{key:"pueblo"}),
+ Object.assign(sq(1,"Who founded the first mission in Alta California?",["Father Junípero Serra","Francis Drake","Juan Cabrillo","Captain Cook"],0,"Father Serra founded Mission San Diego de Alcalá in 1769."),{key:"serra"}),
+ Object.assign(sq(1,"A *peninsula* is land that is —",["surrounded by water on three sides","surrounded by water on all sides","high and flat","between two mountains"],0,"Baja California is a peninsula: water on three sides. An island has water on all sides."),{key:"penin"}),
+ Object.assign(sq(2,"Why did Spain send explorers in the 1500s?",["to find riches, spread Christianity and find a shortcut to Asia","to go on vacation","to sell California to England","to learn surfing"],0,"Gold, religion and a faster trade route to Asia were the big reasons."),{key:"why"}),
+ Object.assign(sq(2,"Why did Spain finally start settling Alta California in 1769?",["It worried Russia and England would claim the land.","It found gold there right away.","The Native peoples invited them.","It wanted to build a railroad."],0,"Spain wanted to hold on to California before other countries took it."),{key:"why1769"}),
+ Object.assign(sq(2,"What were explorers looking for when they searched for the Northwest Passage?",["a water shortcut through North America to Asia","a road over the mountains","a gold mine","a new island"],0,"It would have made trade with Asia faster, but it was never found."),{key:"nwp"}),
+ Object.assign(sq(2,"What is the difference between Alta California and Baja California?",["Alta is upper California (our state); Baja is lower California, a peninsula.","Alta is a city; Baja is a river.","They are two names for the same place.","Alta is an island; Baja is a desert."],0,"*Alta* means upper and *baja* means lower in Spanish."),{key:"alta"}),
+ Object.assign(sq(2,"Put in order: Cabrillo explores the coast, Drake claims land for England, Serra founds the first mission.",["Cabrillo (1542) → Drake (1579) → Serra (1769)","Drake → Cabrillo → Serra","Serra → Drake → Cabrillo","Cabrillo → Serra → Drake"],0,"1542, then 1579, then 1769."),{key:"order"}),
+ Object.assign(sq(3,"Which TWO were part of the 1769 expedition to Alta California?",["Gaspar de Portolá","Father Junípero Serra","Francis Drake","Juan Cabrillo"],[0,1],"Portolá led the soldiers and Serra led the priests. Drake and Cabrillo came long before."),{key:"exp1769"}),
+ Object.assign(sq(3,"Which was NOT a reason Spain explored and settled California?",["to give the land to England","to find riches","to spread Christianity","to keep other countries out"],0,"Spain wanted to keep the land for itself, NOT give it to England."),{key:"notwhy"}),
+ Object.assign(sq(3,"Which TWO kinds of settlements did Spain build in Alta California?",["missions","presidios","shopping malls","skyscrapers"],[0,1],"Spain built missions, presidios and pueblos."),{key:"settle"})
+]});
+SUBJ.ss.intro="Unit 2: California's Native Peoples, plus a preview of explorers and missions.";
+
+// Reading: the class novel unit (Wonders is paused). Questions are written fresh; nothing is copied from the book.
+// Only the beginning of the book for now (no spoilers); add later chapters as the class reads them.
+SUBJ.novel={name:"Class Novel",icon:"🐬",intro:"Island of the Blue Dolphins: the beginning of the book (about chapters 1 to 8).",
+ levels:[
+  {name:"Words",desc:"Words from the book and who is who.",need:.8,mix:{1:1},n:10,test:false},
+  {name:"What happens",desc:"Events, causes and effects.",need:.9,mix:{1:.3,2:1},n:10,test:false},
+  {name:"Think it through",desc:"Character, setting, theme, NOT questions.",need:.9,mix:{2:.4,3:1},n:10,test:false},
+  {name:"Test day",desc:"12 questions, test mode.",need:.9,mix:{2:.6,3:1},n:12,test:true}],
+ topics:[
+ {id:"words",name:"Words & people",notes:[
+  "*Karana*: the girl who tells the story (12 years old at the start). *Ramo*: her little brother. *Ulape*: her older sister. *Chowig*: her father, the chief.",
+  "*Ghalas-at*: their village. The island is off the coast of California and is shaped a bit like a fish.",
+  "*Captain Orlov*: a Russian who brings *Aleut* hunters to the island to hunt sea otters.",
+  "*Kimki*: the chief after Chowig. He sails east to find a new home for the people.",
+  "Words: *otter* (a sea animal hunted for its fur), *pelt* (an animal skin with the fur on), *kelp* (tall seaweed), *abalone* (a sea snail with a shiny shell), *cove* (a small bay), *ravine* (a narrow, steep valley), *mesa* (a flat-topped hill), *council* (a meeting to decide things), *league* (about 3 miles).",
+  "The people each had a secret name and an everyday name. Telling a stranger your secret name was thought to be unwise."],qs:[
+  Object.assign(sq(1,"Who tells the story?",["Karana","Ramo","Captain Orlov","Kimki"],0,"The story is told by Karana, using *I*. That is first-person point of view."),{key:"narr"}),
+  Object.assign(sq(1,"Who is Ramo?",["Karana's little brother","Karana's father","the Russian captain","the new chief"],0,"Ramo is her younger brother."),{key:"ramo"}),
+  Object.assign(sq(1,"Why did Captain Orlov come to the island?",["to hunt sea otters for their fur","to build a school","to find gold","to rescue the people"],0,"He brought Aleut hunters to hunt sea otters. Otter pelts were valuable."),{key:"orlov"}),
+  Object.assign(sq(1,"What is a *pelt*?",["an animal skin with the fur still on","a kind of canoe","a fishing spear","a basket"],0,"Otter pelts (furs) were what the hunters wanted."),{key:"pelt"}),
+  Object.assign(sq(1,"What is *kelp*?",["tall seaweed that grows in the ocean","a kind of bird","a wild dog","a cave"],0,"Kelp is a big seaweed. Otters live in kelp beds."),{key:"kelp"}),
+  Object.assign(sq(1,"What is a *ravine*?",["a narrow, steep valley","a flat-topped hill","a sandy beach","a deep lake"],0,"A ravine is a narrow valley with steep sides."),{key:"ravine"}),
+  Object.assign(sq(1,"What is a *cove*?",["a small, curved bay along the coast","a tall mountain","a kind of fish","a village leader"],0,"A cove is a small bay, a curve in the shoreline where boats can land."),{key:"cove"}),
+  Object.assign(sq(1,"Who was Karana's father?",["Chowig, the chief of Ghalas-at","Captain Orlov","Kimki","an Aleut hunter"],0,"Chowig was the chief of the village."),{key:"chowig"}),
+  Object.assign(sq(1,"What is an *abalone*?",["a sea snail with a shiny shell","a wild dog","a kind of canoe","a tall tree"],0,"Abalone cling to rocks in the sea. People ate them and used the shiny shells."),{key:"abalone"}),
+  Object.assign(sq(1,"What is a *mesa*?",["a hill with a flat top","a narrow valley","a small bay","a seaweed forest"],0,"*Mesa* means table in Spanish: a hill flat on top like a table."),{key:"mesa"}),
+  Object.assign(sq(1,"The people met in a *council*. What is a council?",["a meeting where people decide things together","a fishing trip","a kind of house","a song"],0,"At a council, the people talk and decide what to do."),{key:"council"}),
+  Object.assign(sq(1,"Who became chief after Chowig?",["Kimki","Ramo","Captain Orlov","Ulape"],0,"Kimki became the new chief and later sailed east to find a new home."),{key:"kimkichief"})]},
+ {id:"events",name:"What happens (beginning)",notes:[
+  "A ship comes with Captain Orlov and Aleut hunters. Chief Chowig agrees they can hunt otters if they share the payment fairly.",
+  "When the hunt ends, Orlov tries to leave without paying what he promised. A fight breaks out. Chowig and many of the men are killed.",
+  "With so few men left, the women take on jobs the men used to do, like hunting and fishing.",
+  "Kimki, the new chief, sails east in a canoe to find a new home for the people.",
+  "Later a ship comes to take the people away. Ramo is left behind, and Karana jumps into the sea and swims back to stay with him.",
+  "Karana and Ramo are alone on the island. Ramo is killed by wild dogs, and Karana is left alone."],qs:[
+  Object.assign(sq(2,"Why did the fight with the hunters start?",["Captain Orlov tried to leave without paying what he promised.","Karana took their boat.","The hunters were not allowed on the beach.","Ramo stole their food."],0,"Orlov broke his promise to share the payment fairly."),{key:"fight"}),
+  Object.assign(sq(2,"What was one EFFECT of the fight with the hunters?",["Many men of the village were killed, so the women did the men's jobs.","The village became rich.","The hunters stayed forever.","Everyone moved away that day."],0,"Losing so many men changed life in the village. The women hunted and fished."),{key:"effect"}),
+  Object.assign(sq(2,"Why did Kimki sail away?",["to find a new home for his people","to chase the hunters","to sell otter pelts","because he was lost"],0,"Kimki sailed east to find a new place for the people to live."),{key:"kimki"}),
+  Object.assign(sq(2,"Why did Karana jump off the ship?",["Her little brother was left behind on the island.","She was afraid of the sailors.","She forgot her basket.","She wanted to swim with dolphins."],0,"Ramo was left behind, so she swam back to stay with him."),{key:"jump"}),
+  Object.assign(sq(2,"What happened to Ramo?",["He was killed by wild dogs.","He sailed away with Kimki.","He became chief of the island.","He went to live on the ship."],0,"Wild dogs attacked Ramo, and Karana was left alone."),{key:"ramofate"}),
+  Object.assign(sq(2,"Why was it a mistake for Chowig to tell Captain Orlov his secret name?",["The people believed a secret name was weakened if a stranger used it.","Orlov already knew it.","It was a bad name.","Orlov could not speak their language."],0,"The people kept secret names to protect themselves. Telling a stranger was seen as unwise."),{key:"secret"}),
+  Object.assign(sq(2,"Put in order: the ship takes the people away; the hunters arrive; the fight happens.",["the hunters arrive → the fight happens → the ship takes the people away","the fight → the hunters arrive → the ship","the ship → the hunters arrive → the fight","the hunters arrive → the ship → the fight"],0,"First the hunters came, then the fight, then later the ship came to take the people away."),{key:"order"})]},
+ {id:"think",name:"Character, setting & theme",notes:[
+  "*Setting*: where and when. An island off the coast of California, in the 1800s.",
+  "*Character traits*: describe Karana with proof. Brave and loyal: she jumped into the sea to stay with her brother.",
+  "*Conflict*: Karana against people (the hunters) and against nature (wild dogs, storms, staying alive alone).",
+  "*Theme*: the lesson of the story, like courage, family loyalty, and living with nature.",
+  "The book is based on a real woman who lived alone on San Nicolas Island for about 18 years.",
+  "Written answers: say the trait, then the proof from the book. *Karana is loyal because she swam back to be with Ramo.*"],qs:[
+  Object.assign(sq(3,"Which word BEST describes Karana when she jumps off the ship to stay with Ramo?",["loyal","lazy","selfish","careless"],0,"She risked her life to stay with her brother. That shows loyalty and courage."),{key:"trait"}),
+  Object.assign(sq(3,"What is the setting at the beginning of the book?",["an island off the coast of California, long ago","a big city today","a ship in the middle of the ocean, in the future","a mission in the desert"],0,"Setting = where and when: an island off California in the 1800s."),{key:"setting"}),
+  Object.assign(sq(3,"From what point of view is the book told?",["first person: Karana tells it using I","third person: a narrator outside the story","second person: using you","Ramo tells it"],0,"Karana says *I* and *my*, so it is first person."),{key:"pov"}),
+  Object.assign(sq(3,"Which TWO are conflicts Karana faces at the beginning?",["the hunters who attack her village","being left alone after Ramo dies","choosing what to wear to school","losing a soccer game"],[0,1],"Person vs. person (the hunters) and person vs. nature (staying alive alone)."),{key:"conflict"}),
+  Object.assign(sq(3,"Which sentence is NOT true about Karana at the beginning?",["She wants to leave Ramo behind.","She is about 12 years old.","She tells the story.","She swims back to the island."],0,"She did the opposite: she risked everything to stay with Ramo."),{key:"not"}),
+  Object.assign(sq(3,"Which is the BEST written answer to: “What kind of person is Karana? Use evidence.”",["Karana is brave and loyal because she jumped off the ship and swam back to stay with her brother.","Karana is a girl.","She is nice.","Karana lived on an island and there were otters."],0,"A strong answer names a trait AND gives proof from the book."),{key:"bestans"}),
+  Object.assign(sq(3,"What is a likely THEME of this book?",["Courage and family loyalty can help you survive hard times.","Hunting is always fun.","It is easy to live alone.","Ships are dangerous."],0,"A theme is the big lesson. Karana's courage and loyalty carry her through."),{key:"theme"})]}
+ ]};
+
 // Nonfiction passages like her class reading passages (written fresh, with NOT questions and a word-in-context question).
 STORIES.push(
 {id:"gates",lvl:2,title:"Bill Gates: Coder and Giver",genre:"Biography (nonfiction)",text:[
@@ -1763,7 +1910,7 @@ const LEVELS={
  ]
 };
 Object.entries(SUBJ).forEach(([t,s])=>{LEVELS[t]=s.levels});
-const TRACK_NAME={read:"Reading",gram:"Grammar",gl:"Greek & Latin",math:"Math",ss:"Social Studies",sci:"Science"};
+const TRACK_NAME={read:"Reading",gram:"Grammar",gl:"Greek & Latin",math:"Math",ss:"Social Studies",sci:"Science",novel:"Class Novel"};
 const needCount=(L,total)=>Math.ceil(L.need*total-1e-9);
 
 const LETTERS="ABCDEFGH";
@@ -1844,9 +1991,10 @@ const WEEKLY=[
  {t:"gram",name:"Grammar test",desc:"12 questions from every topic"},
  {t:"gl",name:"Greek & Latin quiz",desc:"10 questions, mostly her newest class unit"},
  {t:"mm",name:"Mad Minute",desc:"40 facts in 1 minute"},
- {t:"math",name:"Math test",desc:"10 questions: estimate, area model, 2-digit × 2-digit",n:10},
- {t:"ss",name:"Social Studies test",desc:"12 questions: California's Native Peoples",n:12},
- {t:"sci",name:"Science quiz",desc:"10 questions: glaciers, wind and erosion",n:10}
+ {t:"math",name:"Math test",desc:"10 questions: multiplication, plus division preview",n:10},
+ {t:"ss",name:"Social Studies test",desc:"12 questions: Native Peoples and explorers",n:12},
+ {t:"sci",name:"Science quiz",desc:"10 questions: erosion, rock layers and fossils",n:10},
+ {t:"novel",name:"Novel quiz",desc:"10 questions: Island of the Blue Dolphins",n:10}
 ];
 
 const VIEWS=["home","reading","greek","roots","report","subj","notes","mm","learn","lesson","quiz","done"];
@@ -2593,7 +2741,7 @@ function renderReport(){
   t+=row("Week grade",k=>{const w=st.weekly[k]||{},d=WEEKLY.filter(x=>w[x.t]);if(!d.length)return cell("—");
     return gcell({right:d.reduce((s,x)=>s+w[x.t].right/w[x.t].total,0),total:d.length})},"tot");
   t+="<tr class='sep'><td colspan='"+(weeks.length+1)+"'>Practice (not counting tests)</td></tr>";
-  [["read","Reading"],["gram","Grammar"],["gl","Greek & Latin"],["math","Math"],["ss","Social Studies"],["sci","Science"]].forEach(([tr,nm])=>{
+  [["read","Reading"],["gram","Grammar"],["gl","Greek & Latin"],["math","Math"],["ss","Social Studies"],["sci","Science"],["novel","Class Novel"]].forEach(([tr,nm])=>{
     t+=row(nm+" practice",k=>{const rs=inWk(st.runs,k).filter(r=>!r.weekly&&trackOf(r)===tr);if(!rs.length)return cell("—");
       const a=rs.reduce((s,r)=>s+r.right,0),b=rs.reduce((s,r)=>s+r.total,0);return cell(Math.round(a/b*100)+"% <small>· "+rs.length+" round"+(rs.length>1?"s":"")+"</small>")})});
   t+=row("Mad Minute best",k=>{const rs=inWk(mm,k).filter(r=>r.kind!=="big"&&!r.weekly&&r.secs===60);if(!rs.length)return cell("—");const best=rs.reduce((x,y)=>y.score/(y.total||30)>x.score/(x.total||30)?y:x);return cell(best.score+"/"+(best.total||30)+" <small>· "+rs.length+" tr"+(rs.length>1?"ies":"y")+"</small>")});

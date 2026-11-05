@@ -54,3 +54,11 @@ taken Nov 4 2026 (Social Studies Native Peoples test → SS "Groups, objects & s
 Unit 1 Week 5 progress test → Grammar "Suffixes & word meaning"; G&L Unit 10 test → multimedia,
 polytheistic; Mad Minute paper 30/30). He may also copy photos into a Google Drive folder named
 Ivana-school-prep; read that folder (read only) as well.
+
+Two standing goals for every refresh (the owner, Nov 5 2026):
+1. Build practice first where she lost points that week.
+2. Keep her a week ahead: read the teacher's weekly update and inventory, the Aeries upcoming
+   assignments and the published curriculum (Wonders, Math Expressions, Twig Science, TCI
+   California's Promise, Wordly Wise Book 5, the class novel, Greek & Latin units), and add next
+   week's material before class gets to it. The class novel subject only covers chapters the class
+   has reached or is about to reach; add later chapters as they come, so it doesn't spoil the book.
