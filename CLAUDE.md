@@ -49,4 +49,8 @@ The owner adds Ivana's weekly progress and test photos to one shared Google Phot
 is kept in the project's notes, not here, because this repo is public. Each week (a Sunday routine),
 read only the photos added since the last refresh, then update the app from them: new units,
 topics and tests, and practice for what she missed. Write the questions in your own words. Photos
-already used: the 21 math class pages taken Oct 19 2026 (Math "methods" topic).
+already used: the 21 math class pages taken Oct 19 2026 (Math "methods" topic); the test papers
+taken Nov 4 2026 (Social Studies Native Peoples test → SS "Groups, objects & skills" topic; Wonders
+Unit 1 Week 5 progress test → Grammar "Suffixes & word meaning"; G&L Unit 10 test → multimedia,
+polytheistic; Mad Minute paper 30/30). He may also copy photos into a Google Drive folder named
+Ivana-school-prep; read that folder (read only) as well.

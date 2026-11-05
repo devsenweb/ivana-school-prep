@@ -893,6 +893,7 @@ const GRAMMAR=[
 // Short lessons shown after a round, keyed by skill name.
 const TIPS={
  "Nouns: plurals & possessives":["Plurals: add *-s*; add *-es* after x, s, sh, ch; consonant + y → *-ies*; f → *-ves*. Learn the odd ones: children, mice, teeth, geese, deer.","Possessives: one owner → *'s* (the dog's bone). Many owners ending in s → just *'* (the girls' coats). *children's*, *men's*."],
+ "Suffixes & word meaning":["Cover the suffix and find the base word. Then add the suffix's meaning: *caution* + *-ous* (full of) = full of caution.","Learn the big six: *-ous* and *-ful* = full of, *-less* = without, *-er*/*-or* = one who, *-est* = the most, *-ly* = how.","Test each answer in the sentence. If it sounds wrong in the sentence, it is wrong."],
  "Editing: capitals, commas & spelling":["Before you turn in a summary, check C-U-P-S: Capitals (first word and names), Usage (their / there / they're), Punctuation (commas, end marks), Spelling.","Read each sentence out loud. If you run out of breath, it may be a run-on. If it leaves you asking *what happened?*, it's a fragment."],
  "Kinds of sentences":["*Statement* tells (.) · *Question* asks (?) · *Command* tells someone to do something (. or !) · *Exclamation* shows strong feeling (!)","A *fragment* is missing a WHO (subject) or a WHAT HAPPENED (predicate). Ask: who did what?"],
  "Subjects & predicates":["*Subject* = who or what the sentence is about. *Predicate* = what the subject does or is.","Find the verb first, then ask *Who or what ___?* The answer is the subject.","Compound subject: *Ana and Leo* sang. Compound predicate: Ana *sang and danced*."],
@@ -1407,7 +1408,7 @@ extra:[
 );
 // take the Unit 9 roots out of the starter units
 GL_UNITS.forEach(u=>{if(u.id.startsWith("s")){u.starter=true;u.roots=u.roots.filter(x=>!["photo","graph","bio"].includes(x.r))}});
-// Unit 10 (test Fri 10/30). From memory: Ivana recalled plural, pluralism, polytheism, megalosaurus, multitude, megalopolis and multidisciplinary on 10/29 (tag "her"). Tag "extra" = practice word, not from her cards.
+// Unit 10 (test Fri 10/30). Her graded Unit 10 test (photo, Nov 4) added multimedia and polytheistic. From memory: Ivana recalled plural, pluralism, polytheism, megalosaurus, multitude, megalopolis and multidisciplinary on 10/29 (tag "her"). Tag "extra" = practice word, not from her cards.
 // The other words are common words on the same roots, added as extra practice. Replace with the class card list when it comes home.
 GL_UNITS.push(
 {id:"u10",name:"Unit 10 (class, from memory): plur, multi, poly, mega",note:"⭐ = a word Ivana remembered from her Unit 10 cards. The others are extra practice words on the same roots, not from her card list.",roots:[
@@ -1418,10 +1419,12 @@ GL_UNITS.push(
   ["multitude","a very large number of people or things","A ___ of fans filled the stadium.","her"],
   ["multidisciplinary","using many subjects together, like math and science in one project","Our robot project was ___: we used math, science and art.","her"],
   ["multiply","to make many more; to add equal groups again and again","If you ___ 3 by 4, you get 12.","extra"],
-  ["multicolored","having many colors","She painted a ___ rainbow on the wall.","extra"]]},
+  ["multicolored","having many colors","She painted a ___ rainbow on the wall.","extra"],
+  ["multimedia","using many kinds of media together, like words, pictures, sound and video","Our ___ report had a poster, a slideshow and a short video.","her"]]},
  {r:"poly",o:"Greek",m:"many",w:[
   ["polytheism","the belief in many gods","The ancient Greeks practiced ___: they worshipped Zeus, Athena and many other gods.","her"],
-  ["polygon","a flat shape with many straight sides","A triangle, a square and a hexagon are each a ___.","extra"]]},
+  ["polygon","a flat shape with many straight sides","A triangle, a square and a hexagon are each a ___.","extra"],
+  ["polytheistic","believing in many gods","The ancient Greeks were ___: they prayed to Zeus, Athena, Apollo and many others.","her"]]},
  {r:"mega",alt:["megalo"],o:"Greek",m:"big, great",w:[
   ["megalosaurus","a huge meat-eating dinosaur (its name means “great lizard”)","The ___ was one of the first dinosaurs ever named.","her"],
   ["megalopolis","a giant city, or a group of big cities that have grown together","Los Angeles and the cities around it form one huge ___.","her"],
@@ -1451,6 +1454,34 @@ Object.assign(TIPS,{
  "Analogies":["Say the first pair as a sentence: *Philadelphia IS A city.* Then use the same sentence for the other pair: *___ IS A continent.*","Check that the relationship matches exactly, not just the topic."],
  "NOT questions":["Circle the word NOT. Three answers are TRUE and one is FALSE. The false one is your answer.","Check each answer: write T or F next to it. Cross off each T. Don't pick the first answer that sounds right."]
 });
+
+
+// Suffixes: what a word ending adds to the meaning. Added Nov 5 2026: on her Wonders Unit 1 Week 5 test she picked
+// "one who has caution" for *cautious* (the answer was "full of caution").
+GRAMMAR.push({id:"suffix",name:"Suffixes & word meaning",qs:[
+ {type:"mc",q:"What does the suffix *-ous* mean?",choices:["full of","one who","without","the most"],a:0,why:"*-ous* means full of: *joyous* = full of joy, *cautious* = full of caution."},
+ {type:"mc",q:"What does the suffix *-less* mean?",choices:["without","full of","one who","again"],a:0,why:"*-less* means without: *fearless* = without fear."},
+ {type:"mc",q:"What does the suffix *-ful* mean?",choices:["full of","without","not","before"],a:0,why:"*-ful* means full of: *hopeful* = full of hope."},
+ {type:"mc",q:"What does the suffix *-er* or *-or* mean in *teacher* and *inventor*?",choices:["one who","full of","without","the most"],a:0,why:"*-er* and *-or* can mean one who: a *teacher* is one who teaches, an *inventor* is one who invents."},
+ {type:"mc",q:"What does the suffix *-est* mean in *tallest*?",choices:["the most","one who","full of","not"],a:0,why:"*-est* compares three or more: *tallest* = the most tall. *-er* compares two: *taller*."},
+ {type:"mc",q:"What does the suffix *-ly* usually tell you in *slowly*?",choices:["how something is done","who does it","without","full of"],a:0,why:"*-ly* tells how: *slowly* = in a slow way."},
+ {type:"mc",q:"What does *cautious* mean?",sent:"The deer was cautious as it stepped onto the road.",choices:["full of caution","one who has caution","without caution","the most caution"],a:0,why:"*caution* + *-ous* (full of) = full of caution, careful. *one who* would be *-er* or *-or*."},
+ {type:"mc",q:"What does *swiftest* mean?",sent:"Of all the runners, Maya was the swiftest.",choices:["being the most swift","without being swift","having a lot of swift","in need of being swift"],a:0,why:"*swift* (fast) + *-est* (the most) = the most swift, the fastest."},
+ {type:"mc",q:"What does *meaningful* mean?",sent:"Grandma gave me a meaningful gift.",choices:["full of meaning","without meaning","one who means","the most mean"],a:0,why:"*meaning* + *-ful* (full of) = full of meaning. It matters a lot."},
+ {lvl:2,type:"mc",q:"What does *fearless* mean?",sent:"The fearless firefighter ran into the smoke.",choices:["without fear","full of fear","one who fears","the most fear"],a:0,why:"*fear* + *-less* (without) = without fear."},
+ {lvl:2,type:"mc",q:"What does *mysterious* mean?",sent:"A mysterious box sat on the porch.",choices:["full of mystery","one who solves mysteries","without mystery","the most mystery"],a:0,why:"*mystery* + *-ous* (full of). The y changes to i: *mysterious* = full of mystery, hard to explain."},
+ {lvl:2,type:"mc",q:"What does *visitor* mean?",sent:"Our class had a visitor from the fire station.",choices:["one who visits","full of visits","without a visit","the most visits"],a:0,why:"*visit* + *-or* (one who) = one who visits."},
+ {lvl:2,type:"mc",q:"What does *dangerous* mean?",sent:"Swimming in the river after a storm is dangerous.",choices:["full of danger","one who is in danger","without danger","in need of danger"],a:0,why:"*danger* + *-ous* (full of) = full of danger."},
+ {lvl:2,type:"mc",q:"Which word means “without hope”?",choices:["hopeless","hopeful","hoping","hoped"],a:0,why:"*-less* means without. *hopeful* is the opposite: full of hope."},
+ {lvl:2,type:"mc",q:"Which word means “full of courage”?",choices:["courageous","courageless","encourage","courager"],a:0,why:"*-ous* means full of: *courage* + *-ous* = *courageous*."},
+ {lvl:2,type:"mc",q:"Which word means “one who sails”?",choices:["sailor","sailing","sailless","sailous"],a:0,why:"*-or* means one who: *sail* + *-or* = *sailor*."},
+ {lvl:3,type:"mc",q:"Which word has a suffix that means “full of”?",choices:["famous","farmer","careless","quickly"],a:0,why:"*fame* + *-ous* = *famous*, full of fame. *-er* = one who, *-less* = without, *-ly* = how."},
+ {lvl:3,type:"mc",q:"Which word does NOT have a suffix that means “one who”?",choices:["nervous","actor","writer","swimmer"],a:0,why:"*actor*, *writer* and *swimmer* end in *-or* or *-er* (one who). *nervous* ends in *-ous* (full of)."},
+ {lvl:3,type:"mc",q:"*Careful* and *careless* are opposites. Why?",choices:["*-ful* means full of and *-less* means without.","They have different base words.","*-ful* means one who.","*-less* means the most."],a:0,why:"Same base word, *care*. *-ful* adds full of; *-less* adds without, so the meanings flip."},
+ {lvl:3,type:"multi",q:"Which TWO words have a suffix that means “full of”?",choices:["joyous","thoughtful","thoughtless","player"],a:[0,1],why:"*-ous* and *-ful* both mean full of. *-less* means without, *-er* means one who."},
+ {lvl:3,type:"mc",q:"How does the suffix change the word?",sent:"poison → poisonous",choices:["It turns a noun into a word that describes: full of poison.","It makes the word mean one who poisons.","It makes it mean without poison.","It makes the word plural."],a:0,why:"*poison* is a thing (noun). Add *-ous* and it describes something full of poison."},
+ {lvl:3,type:"mc",q:"Which word means “the most bright”?",choices:["brightest","brighter","brightly","brightness"],a:0,why:"*-est* = the most. *-er* compares two, *-ly* tells how, *-ness* names the state of being bright."}
+]});
 
 // ---------- Math, Social Studies and Science ----------
 // Same ladder and scoring as grammar. Each topic has notes (Study notes screen) and questions.
@@ -1583,6 +1614,32 @@ SUBJ.ss={name:"Social Studies",icon:"🏕️",intro:"Unit 2: California's Native
   sq(3,"Which is NOT one of the six California Indian regions you studied?",["Rocky Mountains","Northwest","Great Basin","Central Valley"],0,"The six regions are Northwest, Northeast, Central Valley, Great Basin, Southern and Colorado River. The Rocky Mountains are NOT in California."),
   sq(3,"Why were rare seashells a good way for Northwest Indians to show wealth?",["They were hard to get, so having many showed you were rich.","They were easy to find on every beach.","They were used to build houses.","Everyone had the same number of them."],0,"Rare means hard to find. Things that are hard to get are valuable, like money.")]}
  ]};
+
+// Social Studies: from her graded California's Native Peoples test (10/28, 39.5/45). She lost points on the picture questions
+// (what skills were passed down, based on objects in pictures), so this topic practices that kind of thinking and the test facts the app lacked.
+SUBJ.ss.topics.push({id:"test",name:"Groups, objects & skills",notes:[
+ "*Modoc* (Northeast): wove baskets so tightly they could hold water, then cooked in them by dropping in hot stones.",
+ "*Chumash* (Southern coast) had lots of food from the ocean, so their villages were big. The *Luiseño* lived inland with less food, so their villages were smaller.",
+ "*Great Basin*: people made arrowheads and knives from *obsidian*, a hard, black, glassy rock from volcanoes.",
+ "Different *environments* gave different natural resources, so each group's culture was different.",
+ "*Colorado River*: after the spring floods, farmers planted seeds (corn, beans, squash) in the wet, rich soil the river left behind.",
+ "*Picture questions*: look at each object and ask: what was it made from, and what did someone have to KNOW to make or use it? That is the skill passed down.",
+ "Example: a waterproof cap woven from cedar bark → weaving bark. An ocean canoe → building canoes and fishing at sea. A string of clamshells → making shell beads and trading.",
+ "Written answers: name TWO skills, and back each one with the object from the picture. *One skill was weaving, because the cap is woven from bark.*"],qs:[
+ Object.assign(sq(1,"The Modoc wove baskets so tightly that they could —",["hold water for cooking","float like boats","be used as houses","be worn as shoes"],0,"Tight weaving kept water in. They cooked by dropping hot stones into the water."),{key:"modoc"}),
+ Object.assign(sq(1,"Great Basin peoples made sharp arrowheads from *obsidian*. What is obsidian?",["a hard, glassy black rock from volcanoes","a kind of tree bark","a seashell","dried clay"],0,"Obsidian is volcanic glass. It breaks into very sharp edges."),{key:"obsid"}),
+ Object.assign(sq(1,"After the Colorado River flooded, what did farmers do?",["planted seeds in the wet, rich soil","moved to the ocean","hunted buffalo","built snow houses"],0,"The flood left rich mud, so it was a good time to plant corn, beans and squash."),{key:"crseed"}),
+ Object.assign(sq(2,"The Luiseño lived inland. Why were their villages smaller than Chumash villages on the coast?",["They had less food nearby, so fewer people could live in one place.","They did not like living together.","The chief would not allow big villages.","They had too much rain."],0,"More food means more people can live in one village. The ocean gave the Chumash lots of food."),{key:"luiseno"}),
+ Object.assign(sq(2,"Why did California Indian groups have different cultures?",["Each lived in a different environment with different resources.","They all came from different countries.","They each had a king who made the rules.","They wanted to look different from each other."],0,"Food, homes and tools came from the land around them, so each group's way of life fit its environment."),{key:"envcult"}),
+ Object.assign(sq(2,"A picture shows a waterproof cap woven from cedar bark. What skill was probably passed down from parent to child?",["weaving bark into clothing","making pottery","riding horses","farming corn"],0,"The cap is woven from bark, so someone had to know how to weave bark."),{key:"piccap"}),
+ Object.assign(sq(2,"A picture shows a long wooden canoe made for the ocean. Which skill was probably passed down?",["building canoes and fishing at sea","weaving desert grass","grinding acorns","farming beans"],0,"An ocean canoe means people built boats and went out to sea to fish."),{key:"piccanoe"}),
+ Object.assign(sq(2,"A picture shows a long string of clamshell beads. What does it tell you?",["People knew how to make shell beads and used them to trade or show wealth.","People farmed clams in fields.","People built houses from shells.","People ate only clams."],0,"Shell beads took skill to make and were valuable, so they were used for trade and to show wealth."),{key:"picshell"}),
+ Object.assign(sq(2,"A picture shows a stone bowl with a small rounded stone in it. What were people most likely doing?",["grinding acorns into flour","painting pictures","catching fish","making arrowheads"],0,"A stone bowl and a grinding stone (mortar and pestle) were used to grind acorns."),{key:"picmortar"}),
+ Object.assign(sq(3,"Which TWO skills would Northwest children most likely learn from their parents?",["weaving cedar bark","building plank houses and canoes","farming in the desert","herding cattle"],[0,1],"The Northwest had huge forests, so people used trees for bark weaving, plank houses and canoes."),{key:"nwtwo"}),
+ Object.assign(sq(3,"Which is the BEST written answer to: “Based on the pictures, what are two skills these people probably passed down?” (Pictures: a bark cap and an ocean canoe.)",["They passed down weaving, because the cap is woven from bark, and canoe building, because the canoe is carved from wood.","They were good at stuff.","Weaving.","They liked the ocean and hats."],0,"A strong answer names TWO skills and gives a picture clue for each, in a full sentence."),{key:"bestans"}),
+ Object.assign(sq(3,"Which was NOT made from obsidian?",["baskets for cooking","arrowheads","knives","scraping tools"],0,"Obsidian is rock. Baskets were woven from plants."),{key:"notobsid"}),
+ Object.assign(sq(3,"Which TWO show how a group's environment shaped its culture?",["The Modoc used reeds and grasses to weave baskets.","The Chumash used the ocean for food and canoes.","Every group lived exactly the same way.","All groups built stone castles."],[0,1],"Each group used what was around it: plants for the Modoc, the ocean for the Chumash."),{key:"envtwo"})
+]});
 
 SUBJ.sci={name:"Science",icon:"🧊",intro:"DQ 4: how ice and wind change the land (weathering, erosion, deposition).",
  levels:[
