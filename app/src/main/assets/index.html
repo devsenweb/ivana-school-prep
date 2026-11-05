@@ -435,7 +435,7 @@ button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
   <button class="ghost" id="hubBack" style="align-self:flex-start;padding:8px 12px;font-size:.9rem">← All subjects</button>
   <div>
     <h1>Ivana's <span>Mad Minute</span></h1>
-    <p class="sub">30 multiplication facts. Beat the clock.</p>
+    <p class="sub">40 multiplication facts. Beat the clock.</p>
   </div>
   <div>
     <p class="label">Facts</p>
@@ -471,7 +471,7 @@ button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 </div>
 
 <div class="wrap" id="run" hidden>
-  <div class="top"><span id="count">1 / 30</span><span class="clock" id="clock">1:00</span></div>
+  <div class="top"><span id="count">1 / 40</span><span class="clock" id="clock">1:00</span></div>
   <div class="timebar"><i id="tbar" style="width:100%"></i></div>
   <div class="prob" id="prob"><div class="fact" id="fact">7 × 8</div><div class="ans" id="ans"></div><div class="grid" id="grid" hidden></div><p class="ghint" id="ghint" hidden>Split into tens and ones. Fill each box, then add the boxes up yourself for the total.</p></div>
   <div class="pad" id="pad">
@@ -485,7 +485,7 @@ button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 
 <div class="wrap" id="done" hidden>
   <div class="panel" style="text-align:center">
-    <div class="big" id="score">24/30</div>
+    <div class="big" id="score">32/40</div>
     <p class="verdict" id="verdict">Nice work!</p>
     <p class="muted" id="detail"></p>
   </div>
@@ -559,14 +559,14 @@ function makeSet(only){
 }
 
 let set=[],i=0,typed="",right=0,missed=[],timer=null,endAt=0,startAt=0,lock=null,running=false;
-let kind="facts",total=30,runSecs=60; // runSecs 0 = untimed (2-digit)
+let kind="facts",total=40,runSecs=60; // runSecs 0 = untimed (2-digit)
 let cells=[],cur=0,cellsFor=-1,busy=false; // 2-digit split table: 4 part-products + total
 function show(id){["home","run","done"].forEach(x=>$(x).hidden=x!==id);window.scrollTo(0,0)}
 function secsLabel(s){return s===90?"1½ min":(s/60)+" min"}
 function fmt(s){s=Math.max(0,Math.ceil(s));return Math.floor(s/60)+":"+String(s%60).padStart(2,"0")}
 
 async function start(only,k){
-  kind=k||"facts";total=kind==="big"?10:30;runSecs=kind==="big"?0:secs;
+  kind=k||"facts";total=kind==="big"?10:40;runSecs=kind==="big"?0:secs;
   $("clock").hidden=$("tbar").parentNode.hidden=!runSecs;
   set=makeSet(only);i=0;typed="";right=0;missed=[];running=true;cellsFor=-1;busy=false;
   show("run");render();
@@ -1780,7 +1780,7 @@ const WEEKLY=[
  {t:"read",name:"Reading test",desc:"2 stories, 12 questions, like the Wonders test"},
  {t:"gram",name:"Grammar test",desc:"12 questions from every topic"},
  {t:"gl",name:"Greek & Latin quiz",desc:"10 questions, mostly her newest class unit"},
- {t:"mm",name:"Mad Minute",desc:"30 facts in 1 minute, like the paper test"},
+ {t:"mm",name:"Mad Minute",desc:"40 facts in 1 minute"},
  {t:"math",name:"Math test",desc:"10 questions: estimate, area model, 2-digit × 2-digit",n:10},
  {t:"ss",name:"Social Studies test",desc:"12 questions: California's Native Peoples",n:12},
  {t:"sci",name:"Science quiz",desc:"10 questions: glaciers, wind and erosion",n:10}
@@ -2489,7 +2489,7 @@ function renderHub(){
   $("glSub").textContent="Level "+l.cur+" "+LEVELS.gl[l.cur-1].name+" · "+GL_ROOTS.length+" roots";
   const mr=mmRuns().filter(x=>x.kind!=="big").sort((a,b)=>a.at-b.at).pop();
   Object.keys(SUBJ).forEach(t=>{const lv=st.lv[t];$("sub_"+t).textContent="Level "+lv.cur+" "+LEVELS[t][lv.cur-1].name+" · "+SUBJ[t].intro.split(":")[0]});
-  $("mmSub").textContent=mr?"Last try: "+mr.score+"/"+(mr.total||30):"30 multiplication facts. Beat the clock";
+  $("mmSub").textContent=mr?"Last try: "+mr.score+"/"+(mr.total||30):"40 multiplication facts. Beat the clock";
   const k=wkKey(Date.now()),w=st.weekly[k]||{};
   const wed=new Date(wkDate(k));wed.setDate(wed.getDate()+2);
   $("wkLabel").textContent="This week's tests · week of "+wkLabel(k);
@@ -2533,7 +2533,7 @@ function renderReport(){
   [["read","Reading"],["gram","Grammar"],["gl","Greek & Latin"],["math","Math"],["ss","Social Studies"],["sci","Science"]].forEach(([tr,nm])=>{
     t+=row(nm+" practice",k=>{const rs=inWk(st.runs,k).filter(r=>!r.weekly&&trackOf(r)===tr);if(!rs.length)return cell("—");
       const a=rs.reduce((s,r)=>s+r.right,0),b=rs.reduce((s,r)=>s+r.total,0);return cell(Math.round(a/b*100)+"% <small>· "+rs.length+" round"+(rs.length>1?"s":"")+"</small>")})});
-  t+=row("Mad Minute best",k=>{const rs=inWk(mm,k).filter(r=>r.kind!=="big"&&!r.weekly&&r.secs===60);if(!rs.length)return cell("—");return cell(Math.max(...rs.map(r=>r.score))+"/30 <small>· "+rs.length+" tr"+(rs.length>1?"ies":"y")+"</small>")});
+  t+=row("Mad Minute best",k=>{const rs=inWk(mm,k).filter(r=>r.kind!=="big"&&!r.weekly&&r.secs===60);if(!rs.length)return cell("—");const best=rs.reduce((x,y)=>y.score/(y.total||30)>x.score/(x.total||30)?y:x);return cell(best.score+"/"+(best.total||30)+" <small>· "+rs.length+" tr"+(rs.length>1?"ies":"y")+"</small>")});
   t+=row("Levels unlocked",k=>{const ls=inWk(st.levelLog,k);return cell(ls.length?ls.map(l=>TRACK_NAME[l.track]+" L"+l.lvl).join("<br>"):"—")});
   t+=row("Rounds practiced",k=>cell(inWk(st.runs,k).filter(r=>!r.weekly).length+inWk(mm,k).filter(r=>!r.weekly).length||"—"));
   t+="</tbody></table>";
