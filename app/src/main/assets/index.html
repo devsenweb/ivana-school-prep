@@ -187,6 +187,7 @@ mark.b{background:rgba(242,183,5,.28);background:color-mix(in srgb,var(--pencil)
 .rtable .g{font-weight:800}
 .rtable .g.lo{color:var(--red)} .rtable .g.mid{color:#b07d00} .rtable .g.hi{color:var(--green)}
 .rtable tr.tot td{font-size:1rem}
+.rtable small.tries{display:inline-block;font-weight:600;font-size:.7rem;color:var(--muted);white-space:normal;max-width:9em;line-height:1.25}
 /* Greek & Latin root cards */
 .unit{margin:0 0 18px}
 .unit .uh{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:0 0 8px}
@@ -232,7 +233,7 @@ mark.neg{background:var(--red-bg);color:var(--red);font-weight:800;padding:0 .2e
   <div class="panel">
     <p class="label" id="wkLabel">This week's tests</p>
     <div class="wk" id="wkTests"></div>
-    <p class="muted" style="margin-top:10px">Like the Wednesday tests at school: your first try each week is your grade. Do your practice first, then take the test.</p>
+    <p class="muted" style="margin-top:10px">Like the Wednesday tests at school. Do your practice first, then take the test. You can retake it: your newest try is the grade, and earlier tries stay on the report card.</p>
   </div>
   <button class="tile" id="goReport"><span class="ic">📊</span><span><b>Weekly report card</b><small id="reportSub">Grades and practice, week by week</small></span></button>
 </div>
@@ -304,7 +305,7 @@ mark.neg{background:var(--red-bg);color:var(--red);font-weight:800;padding:0 .2e
 
 <div class="wrap" id="report" hidden>
   <div class="top"><h2 style="font-family:var(--display);font-size:2rem">📊 Report card</h2><button class="ghost" id="reportBack">Home</button></div>
-  <p class="muted">Each column is one week (Monday to Sunday). Test grades are your first try that week.</p>
+  <p class="muted">Each column is one week (Monday to Sunday). Test grades are your newest try that week. A retake shows your earlier tries under it.</p>
   <div class="rtable" id="reportTable"></div>
   <p class="muted" id="reportNote"></p>
 </div>
@@ -1672,7 +1673,12 @@ st.seen=st.seen||{};      // question id -> times answered
 st.lv=st.lv||{};          // track -> {top: highest unlocked, cur: level she's playing, pass: passes at top}
 ["read","gram","gl"].concat(Object.keys(SUBJ)).forEach(t=>{st.lv[t]=st.lv[t]||{top:1,cur:1,pass:0}});
 st.root=st.root||{};      // Greek & Latin root -> {r,t}
-st.weekly=st.weekly||{};  // week (Monday date) -> {read|gram|gl|mm: {right,total,at}}  first try only
+st.weekly=st.weekly||{};  // week (Monday date) -> {read|gram|gl|mm: {right,total,at,tries:[{right,total,at}]}}  right/total/at = latest try
+// every weekly test try is kept; the newest one is the week's score
+const wkTries=x=>x?(x.tries&&x.tries.length?x.tries:[{right:x.right,total:x.total,at:x.at}]):[];
+function wkRecord(k,t,res){const w=st.weekly[k]=st.weekly[k]||{},prev=w[t],tries=wkTries(prev).concat([res]);
+  w[t]={right:res.right,total:res.total,at:res.at,tries};save();return {now:w[t],prev,n:tries.length}}
+const pctOf=x=>Math.round(x.right/x.total*100);
 st.levelLog=st.levelLog||[]; // {at,track,lvl} each time a level unlocks
 function save(){lsSet(st)}
 
@@ -2195,13 +2201,11 @@ function finish(){
     if(lvMsg.kind!=="miss"){lu.style.background="";lu.style.color="";lu.style.border=""}
   }
   if(S.weekly){
-    const k=wkKey(run.at),w=st.weekly[k]=st.weekly[k]||{},first=!w[S.track];
-    if(first){w[S.track]={right:S.right,total:S.items.length,at:run.at};save()}
-    const g=w[S.track],gp=Math.round(g.right/g.total*100);
+    const k=wkKey(run.at),rec=wkRecord(k,S.track,{right:S.right,total:S.items.length,at:run.at});
     $("verdict").textContent="Grade: "+letter(pct);
     lu.hidden=false;lu.style.background=lu.style.color=lu.style.border="";
-    lu.innerHTML=first?"<b>This week's grade: "+letter(pct)+"</b><p>"+pct+"% · saved to your report card for the week of "+wkLabel(k)+".</p>"
-      :"<b>Practice retake</b><p>This week's grade stays <strong>"+letter(gp)+" ("+gp+"%)</strong>. Next week's test opens on Monday.</p>";
+    if(!rec.prev)lu.innerHTML="<b>This week's grade: "+letter(pct)+"</b><p>"+pct+"% · saved to your report card for the week of "+wkLabel(k)+".</p>";
+    else{const was=pctOf(rec.prev);lu.innerHTML="<b>Retake saved: "+letter(pct)+" ("+pct+"%)</b><p>This is try "+rec.n+" this week. Your last try was "+letter(was)+" ("+was+"%). The report card shows this score and keeps the earlier ones.</p>"}
   }
   // tip card: the lesson for the topic she missed most this round
   const tip=$("tip");tip.hidden=true;
@@ -2426,10 +2430,8 @@ function openMM(weekly){
 window.closeMM=()=>go("home");
 // the frame calls this when the weekly Mad Minute is done; returns a line for its score screen
 window.mmWeeklyDone=run=>{
-  const k=wkKey(run.at),w=st.weekly[k]=st.weekly[k]||{};
-  const first=!w.mm;if(first){w.mm={right:run.score,total:run.total,at:run.at};save()}
-  const p=Math.round(w.mm.right/w.mm.total*100);
-  return first?"Weekly grade: "+letter(p):"Practice retake (this week's grade stays "+letter(p)+")";
+  const rec=wkRecord(wkKey(run.at),"mm",{right:run.score,total:run.total,at:run.at}),p=pctOf(rec.now);
+  return !rec.prev?"Weekly grade: "+letter(p):"Retake "+rec.n+" saved: "+letter(p)+" (last try "+letter(pctOf(rec.prev))+")";
 };
 function mmBack(){
   const d=mmFrame&&mmFrame.contentWindow.document;
@@ -2497,7 +2499,7 @@ function renderHub(){
   WEEKLY.forEach(x=>{const row=document.createElement("div"),res=w[x.t];row.className="wkrow";
     row.innerHTML="<span class='nm'><b>"+esc(x.name)+"</b><small>"+esc(x.desc)+"</small></span>";
     if(res){const p=Math.round(res.right/res.total*100);
-      const gb=document.createElement("span");gb.className="grade "+(p>=90?"":p>=70?"mid":"lo");gb.innerHTML=letter(p)+"<small>"+res.right+"/"+res.total+"</small>";
+      const gb=document.createElement("span");gb.className="grade "+(p>=90?"":p>=70?"mid":"lo");const n=wkTries(res).length;gb.innerHTML=letter(p)+"<small>"+res.right+"/"+res.total+(n>1?" · try "+n:"")+"</small>";
       const rb=document.createElement("button");rb.className="redo";rb.textContent="Retake";rb.onclick=()=>startWeekly(x.t);
       row.append(rb,gb)}
     else{const b=document.createElement("button");b.className="take";b.textContent="Take test";b.onclick=()=>startWeekly(x.t);row.appendChild(b)}
@@ -2526,7 +2528,11 @@ function renderReport(){
   const row=(name,fn,cls)=>"<tr"+(cls?" class='"+cls+"'":"")+"><td>"+name+"</td>"+weeks.map(fn).join("")+"</tr>";
   let t="<table><thead><tr><th>Week of</th>"+weeks.map(k=>"<th>"+wkLabel(k)+(k===now?"<br>(now)":"")+"</th>").join("")+"</tr></thead><tbody>";
   t+="<tr class='sep'><td colspan='"+(weeks.length+1)+"'>Weekly tests</td></tr>";
-  WEEKLY.forEach(x=>{t+=row(esc(x.name),k=>gcell((st.weekly[k]||{})[x.t]))});
+  // weekly test cell: newest try is the grade; earlier tries listed under it
+  const tcell=res=>{if(!res)return cell("—");const tr=wkTries(res),p=pctOf(res);
+    const hist=tr.length>1?"<br><small class='tries'>retake · earlier "+tr.slice(0,-1).map(x=>letter(pctOf(x))+" "+pctOf(x)+"%").join(", ")+"</small>":"";
+    return cell(letter(p)+" <small>"+p+"%</small>"+hist,"g "+gradeTone(p))};
+  WEEKLY.forEach(x=>{t+=row(esc(x.name),k=>tcell((st.weekly[k]||{})[x.t]))});
   t+=row("Week grade",k=>{const w=st.weekly[k]||{},d=WEEKLY.filter(x=>w[x.t]);if(!d.length)return cell("—");
     return gcell({right:d.reduce((s,x)=>s+w[x.t].right/w[x.t].total,0),total:d.length})},"tot");
   t+="<tr class='sep'><td colspan='"+(weeks.length+1)+"'>Practice (not counting tests)</td></tr>";
@@ -2547,7 +2553,7 @@ renderAll();
 /* School Prep progress sync (SP_SYNC_V1).
    Keeps Ivana's progress in one place (a Wix CMS item) so the Android app and the website share it.
    Pull + merge when the page opens or comes back into view, push whenever local progress changes.
-   Merge: practice rounds and level log are combined; a weekly test keeps its first try; each level
+   Merge: practice rounds and level log are combined; weekly test tries are combined (newest is the grade); each level
    track keeps the higher level; per-question counters come from whichever side answered more. */
 (function(){
 var CID="e5b61c17-e04c-4e3d-8155-781db19fc3a0",API="https://www.wixapis.com",COL="progress",ID="sp-main";
@@ -2562,6 +2568,7 @@ function parse(s){if(!s)return{};if(typeof s==="object")return s;try{return JSON
 // ---------- merge ----------
 function union(a,b,key,cap){var m={},out=[];(a||[]).concat(b||[]).forEach(function(x){var k=key(x);if(!m[k]){m[k]=1;out.push(x)}});
   out.sort(function(x,y){return (x.at||0)-(y.at||0)});return cap?out.slice(-cap):out}
+function tries(x){return !x?[]:x.tries&&x.tries.length?x.tries:[{right:x.right,total:x.total,at:x.at}]}
 function sum(o){var n=0;for(var k in o||{})n+=+o[k]||0;return n}
 function better(a,b){if(!a)return b;if(!b)return a;
   if((a.top||0)!==(b.top||0))return (a.top||0)>(b.top||0)?a:b;
@@ -2571,7 +2578,9 @@ function mergeRC(L,R){
   o.runs=union(L.runs,R.runs,function(r){return r.at+"|"+r.kind+"|"+r.name},300);
   o.levelLog=union(L.levelLog,R.levelLog,function(l){return l.at+"|"+l.track+"|"+l.lvl});
   o.weekly={};[L.weekly||{},R.weekly||{}].forEach(function(W){for(var wk in W){var w=o.weekly[wk]=o.weekly[wk]||{};
-    for(var t in W[wk]){var x=W[wk][t];if(!w[t]||(x&&(x.at||0)<(w[t].at||0)))w[t]=x}}});
+    for(var t in W[wk]){var x=W[wk][t];if(!x)continue;
+      var tr=union(tries(w[t]),tries(x),function(a){return a.at+"|"+a.right+"|"+a.total}),n=tr[tr.length-1];
+      w[t]={right:n.right,total:n.total,at:n.at,tries:tr}}}});
   o.lv={};[L.lv||{},R.lv||{}].forEach(function(V){for(var t in V)o.lv[t]=better(o.lv[t],V[t])});
   o.learned={};[R.learned||{},L.learned||{}].forEach(function(X){for(var i in X)if(X[i])o.learned[i]=X[i]});
   var big=sum(R.seen)>sum(L.seen)?R:L;["skill","miss","seen","root"].forEach(function(f){o[f]=big[f]||{}});
