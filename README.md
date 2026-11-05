@@ -56,7 +56,7 @@ top of the script). Once it is on `main`, the app downloads it on next launch. N
 ## Get the APK
 Pushes that change the app code run the "Build Reading Coach APK" workflow (the file keeps its old name) (`.github/workflows/apk.yml`):
 
-https://github.com/devsenweb/reading-coach/releases/download/latest/ReadingCoach.apk
+https://github.com/devsenweb/ivana-school-prep/releases/download/latest/ReadingCoach.apk
 
 Open that on the Android phone, tap the download, and allow "Install unknown apps" when asked.
 It installs alongside Mad Minute (different app id).

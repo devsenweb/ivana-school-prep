@@ -129,8 +129,8 @@ public class MainActivity extends Activity {
 
     // In-app update of the app itself: the page shows an Update button when build.gradle on main
     // has a newer versionCode; tapping it downloads the APK and opens Android's install screen.
-    private static final String GRADLE_URL = "https://raw.githubusercontent.com/devsenweb/reading-coach/main/app/build.gradle";
-    private static final String APK_URL = "https://github.com/devsenweb/reading-coach/releases/download/latest/ReadingCoach.apk";
+    private static final String GRADLE_URL = "https://raw.githubusercontent.com/devsenweb/ivana-school-prep/main/app/build.gradle";
+    private static final String APK_URL = "https://github.com/devsenweb/ivana-school-prep/releases/download/latest/ReadingCoach.apk";
     private static final String INSTALL_ACTION = "com.dhil.readingcoach.INSTALL_STATUS";
     private volatile boolean installing;
 

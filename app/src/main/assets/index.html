@@ -1831,7 +1831,7 @@ function pickVoice(names){
 }
 // Natural voice: recorded clips (tools/make_voice.py) beat the phone's robotic text-to-speech.
 // Lines without a clip, or when offline, fall back to text-to-speech below.
-const CLIPS_URL="https://raw.githubusercontent.com/devsenweb/reading-coach/main/app/src/main/assets/voice/";
+const CLIPS_URL="https://raw.githubusercontent.com/devsenweb/ivana-school-prep/main/app/src/main/assets/voice/";
 let clipMap={},clipBuf={},clipSrc=null;
 function loadClips(){
   const a=ctx();if(!a||!window.fetch)return;

@@ -1,7 +1,8 @@
 # Ivana School Prep (formerly Reading Coach): notes for Claude
 
-The app id, repo name, APK name and update URLs stay `readingcoach` so the installed app keeps
-updating itself. The page must keep containing the text "Reading Coach" or "School Prep": older
+The repo is `devsenweb/ivana-school-prep` (renamed from reading-coach on Nov 5 2026; GitHub forwards
+the old address, and app v2.1+ uses the new one). The app id and APK name stay `readingcoach` /
+`ReadingCoach.apk` so the installed app keeps updating itself in place. The page must keep containing the text "Reading Coach" or "School Prep": older
 apps only accept a downloaded page that contains "Reading Coach".
 
 ## Shipping changes: push straight to `main`, no PR

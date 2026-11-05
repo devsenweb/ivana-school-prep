@@ -1,7 +1,7 @@
 plugins { id 'com.android.application' }
 
 // The app pulls the latest index.html from this repo on every launch (self-updating).
-def updateUrl = "https://raw.githubusercontent.com/devsenweb/reading-coach/main/app/src/main/assets/index.html"
+def updateUrl = "https://raw.githubusercontent.com/devsenweb/ivana-school-prep/main/app/src/main/assets/index.html"
 
 android {
     namespace 'com.dhil.readingcoach'
@@ -10,8 +10,8 @@ android {
         applicationId 'com.dhil.readingcoach'
         minSdk 24
         targetSdk 34
-        versionCode 6
-        versionName '2.0'
+        versionCode 7
+        versionName '2.1'
         buildConfigField 'String', 'UPDATE_URL', "\"${updateUrl}\""
     }
     buildFeatures { buildConfig true }
