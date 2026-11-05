@@ -42,3 +42,11 @@ check if it's easy, but never hold a push or ask the owner first; just ship it a
 - Write NOT / EXCEPT in capitals: those questions get a red mark and she must tap to confirm she
   saw the word before the choices open (she loses points on NOT questions by rushing).
 - Write questions and passages in your own words; don't copy publisher passages.
+
+## Weekly refresh from her progress photos
+
+The owner adds Ivana's weekly progress and test photos to one shared Google Photos album. Its link
+is kept in the project's notes, not here, because this repo is public. Each week (a Sunday routine),
+read only the photos added since the last refresh, then update the app from them: new units,
+topics and tests, and practice for what she missed. Write the questions in your own words. Photos
+already used: the 21 math class pages taken Oct 19 2026 (Math "methods" topic).
