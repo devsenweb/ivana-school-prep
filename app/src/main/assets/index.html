@@ -1715,8 +1715,15 @@ SUBJ.sci.topics.push({id:"layers",name:"Rock layers & fossils (Module 3)",notes:
  Object.assign(sq(3,"Which TWO are slow changes to Earth's surface?",["a river carving a canyon","wind wearing away a rock","a volcano erupting","an earthquake"],[0,1],"Carving and wearing away take a very long time. Volcanoes and earthquakes are fast."),{key:"slowtwo"})
 ]});
 
-// Math: Math Expressions Unit 3, division with whole numbers (next unit after the Unit 2 test).
-SUBJ.math.topics.push({id:"div",name:"Division (Unit 3 preview)",notes:[
+// Math: Math Expressions Unit 3, long division. The class started it Nov 5. The teacher's Nov 5 note says homework is
+// incomplete unless every step is shown, models are complete and labeled, explanations use key vocabulary and the
+// answer is checked with multiplication, so this topic drills those four habits.
+SUBJ.math.topics.push({id:"div",name:"Long division (Unit 3)",notes:[
+ "*What Mrs. Strohmenger checks*: every step shown, models complete and labeled, key words in explanations, and a multiplication check. Missing any of these = not complete.",
+ "*Long division steps*, over and over: Divide, Multiply, Subtract, Bring down. (Dad, Mom, Sister, Brother.) Then check.",
+ "Example 157 ÷ 4: 15 ÷ 4 = 3 (write 3 over the 5). 3 × 4 = 12. 15 − 12 = 3. Bring down 7 → 37. 37 ÷ 4 = 9. 9 × 4 = 36. 37 − 36 = 1. Answer 39 R1.",
+ "*Label a model*: in Place Value Sections or Expanded Notation, write the divisor on the side, each partial quotient (like 30 and 9) above its section, and what is left after each subtraction.",
+ "*Explain with key words*: “The *dividend* 157 is split into 4 equal groups (the *divisor*). The *quotient* is 39 and the *remainder* is 1.”",
  "Division undoes multiplication: 24 ÷ 6 = 4 because 6 × 4 = 24.",
  "Words: in 25 ÷ 4 = 6 R1, 25 is the *dividend*, 4 is the *divisor*, 6 is the *quotient* and 1 is the *remainder*.",
  "Big numbers: break the dividend into parts you know. 84 ÷ 4 → 80 ÷ 4 = 20 and 4 ÷ 4 = 1, so 21.",
@@ -1744,7 +1751,22 @@ SUBJ.math.topics.push({id:"div",name:"Division (Unit 3 preview)",notes:[
  Object.assign(sq(3,"Which is NOT a correct way to find 72 ÷ 3?",["(7 ÷ 3) + (2 ÷ 3)","(60 ÷ 3) + (12 ÷ 3)","(30 ÷ 3) + (42 ÷ 3)","3 × ? = 72"],0,"The 7 in 72 means 70, not 7. Split 72 into parts that divide evenly: 60 + 12. The answer is 24."),{key:"notdiv"}),
  Object.assign(sq(3,"Estimate: about how much is 389 ÷ 4?",["about 100","about 10","about 1,000","about 40"],0,"389 is close to 400, and 400 ÷ 4 = 100."),{key:"est"})
 ]});
-SUBJ.math.intro="Unit 2: multiplying big numbers, plus a preview of Unit 3 division.";
+SUBJ.math.topics.find(t=>t.id==="div").qs.push(
+ Object.assign(sq(1,"What are the steps of long division, in order?",["Divide, Multiply, Subtract, Bring down","Multiply, Divide, Add, Bring down","Subtract, Divide, Multiply, Bring down","Divide, Add, Subtract, Multiply"],0,"Divide, Multiply, Subtract, Bring down. Repeat until there is nothing left to bring down."),{key:"steps"}),
+ Object.assign(sq(1,"After you SUBTRACT in long division, what is the next step?",["Bring down the next digit","Divide again right away","Add the remainder","Erase your work"],0,"Divide, Multiply, Subtract, then Bring down the next digit and start again."),{key:"next"}),
+ Object.assign(sq(1,"Which number sentence checks 84 ÷ 4 = 21?",["21 × 4 = 84","84 × 4 = 336","21 + 4 = 25","84 − 21 = 63"],0,"Multiply the quotient by the divisor. If you get the dividend, the answer is right."),{key:"chk84"}),
+ Object.assign(sq(2,"Long division for 157 ÷ 4: 15 ÷ 4 = 3, 3 × 4 = 12, 15 − 12 = 3. What do you do next?",["Bring down the 7 to make 37","Write the answer 3","Divide 157 by 3","Add 12 + 3"],0,"After subtracting, bring down the next digit: 37. Then divide 37 ÷ 4 = 9."),{key:"bring157"}),
+ Object.assign(sq(2,"What is 157 ÷ 4?",["39 R1","38 R5","39 R3","40 R1"],0,"15 ÷ 4 = 3 R3, bring down 7 → 37. 37 ÷ 4 = 9 R1. Check: 39 × 4 + 1 = 157."),{key:"d157"}),
+ Object.assign(sq(2,"Which check is correct for 157 ÷ 4 = 39 R1?",["39 × 4 + 1 = 157","39 × 4 = 157","39 + 4 + 1 = 44","157 × 4 = 628"],0,"Quotient × divisor, then add the remainder: 156 + 1 = 157."),{key:"chk157"}),
+ Object.assign(sq(2,"In a Place Value Sections model for 96 ÷ 4, the sections say 80 and 16. What labels go above them?",["20 and 4 (the partial quotients)","4 and 4","80 and 16","96 and 4"],0,"80 ÷ 4 = 20 and 16 ÷ 4 = 4. Label each section with its partial quotient. 20 + 4 = 24."),{key:"label96"}),
+ Object.assign(sq(2,"What should you write next to the side of a division model?",["the divisor","the remainder only","the date","nothing"],0,"The divisor goes on the side, like the side length of a rectangle. A complete model is labeled."),{key:"labelside"}),
+ Object.assign(sq(3,"Which explanation uses the key vocabulary correctly for 75 ÷ 6 = 12 R3?",["The dividend 75 is split into groups of 6, the divisor. The quotient is 12 and the remainder is 3.","I did the problem and got 12.","75 is the quotient and 6 is the remainder.","The answer is 12 because I know it."],0,"A complete explanation names the dividend, divisor, quotient and remainder correctly."),{key:"vocab75"}),
+ Object.assign(sq(3,"Sam says 94 ÷ 3 = 31 R1. He checks: 31 × 3 + 1 = 94. Is he right?",["Yes, because 93 + 1 = 94","No, because 31 × 3 = 91","No, a remainder is never allowed","Yes, because 94 is even"],0,"31 × 3 = 93, and 93 + 1 = 94, so the check works."),{key:"sam94"}),
+ Object.assign(sq(3,"Maya wrote 86 ÷ 4 = 20 R6. What did she do wrong?",["Her remainder is bigger than the divisor; it should be 21 R2.","Nothing, it is correct.","She should have multiplied 86 × 4.","The remainder should be 0."],0,"6 is more than 4, so one more group fits: 21 R2. Check: 21 × 4 + 2 = 86."),{key:"maya86"}),
+ Object.assign(sq(3,"Which TWO things does Mrs. Strohmenger require on every division problem?",["every step shown","a multiplication check","only the final answer","a drawing of a pet"],[0,1],"Show all steps and check with multiplication. Models are labeled and explanations use key words too."),{key:"rules"}),
+ Object.assign(sq(3,"Which piece of work would be marked NOT complete?",["just the answer 24, with no steps or check","steps shown, model labeled, checked with 24 × 4 = 96","steps shown and checked with multiplication","long division steps with a labeled area model"],0,"An answer alone, with no steps or check, counts as incomplete."),{key:"notdone"})
+);
+SUBJ.math.intro="Unit 2: multiplying big numbers, and Unit 3: long division.";
 
 // Social Studies: the next TCI chapter, exploration and settlement of California.
 SUBJ.ss.topics.push({id:"explore",name:"Explorers & missions (next chapter)",notes:[
@@ -1992,7 +2014,7 @@ const WEEKLY=[
  {t:"gram",name:"Grammar test",desc:"12 questions from every topic"},
  {t:"gl",name:"Greek & Latin quiz",desc:"10 questions, mostly her newest class unit"},
  {t:"mm",name:"Mad Minute",desc:"40 facts in 1 minute"},
- {t:"math",name:"Math test",desc:"10 questions: multiplication, plus division preview",n:10},
+ {t:"math",name:"Math test",desc:"10 questions: multiplication and long division",n:10},
  {t:"ss",name:"Social Studies test",desc:"12 questions: Native Peoples and explorers",n:12},
  {t:"sci",name:"Science quiz",desc:"10 questions: Module 3 erosion, rock layers and fossils",n:10},
  {t:"novel",name:"Novel quiz",desc:"10 questions: Island of the Blue Dolphins",n:10}
